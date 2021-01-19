@@ -1,0 +1,34 @@
+{
+  "name": "oncomedic-videos",
+  "version": "1.0.0",
+  "description": "Software de gestiòn multimedia para sala de espera",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "electron --no-sandbox .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juandsc98/videos-electron-lowdb-.git"
+  },
+  "keywords": [],
+  "author": "Juan David Salazar Casas <juandsc98@gmil.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/juandsc98/videos-electron-lowdb-/issues"
+  },
+  "homepage": "https://github.com/juandsc98/videos-electron-lowdb-#readme",
+  "dependencies": {
+    "lowdb": "^1.0.0",
+    "notie": "^4.3.1",
+    "promise-mysql": "^5.0.1",
+    "username": "^5.1.0",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "electron": "^11.2.0",
+    "electron-builder": "^22.9.1",
+    "electron-reload": "^1.5.0"
+  }
+}

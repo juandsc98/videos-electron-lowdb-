@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software sala de espera</title>
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <link rel="stylesheet" href="animate.min.css">
+    <link rel="stylesheet" href="./notie.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="./ui.js"></script>
+    <script src="./bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="loader-body" id="loader">
+        <img class="position-absolute top-50 start-50 translate-middle loader" src="./loader.gif"/>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1 col-xl-1">
+            <div class="btn-group-vertical w-100" style="height: 100vh;"  role="group" aria-label="Button group with nested dropdown">
+                <button onclick="redirectHome()" id="home" type="button" class="btn btn-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-house m-auto" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 3.293l6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+                            <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+                        </svg><br>
+                        <p class="text-center" style="line-height: 14px;font-size: 11px;margin-top:5px;padding:10px;">Subir Archivos</p>
+                </button>
+                <button onclick="redirectMedia()" id="videos" type="button" class="btn btn-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-collection-play-fill m-auto" viewBox="0 0 16 16">
+                        <path d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zm6.258-6.437a.5.5 0 0 1 .507.013l4 2.5a.5.5 0 0 1 0 .848l-4 2.5A.5.5 0 0 1 6 12V7a.5.5 0 0 1 .258-.437z"/>
+                      </svg><br>
+                    <p style="line-height: 14px;font-size: 11px;margin-top:5px;padding:10px;">Gestionar Archivos</p>
+                </button>
+                <button id="presentar" type="button" class="btn btn-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-collection-play-fill m-auto" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z"/>
+                      </svg><br>
+                    <p style="line-height: 14px;font-size: 11px;margin-top:5px;padding:10px;">Presentar Media</p>
+                </button>
+              
+                
+              </div>
+
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-11 col-lg-11 col-xl-11">
+            <div class="w-100" id="main-app">
+                <header class="p-4 bg-secondary">
+        
+                    <h2 class="text-center text-white mt-8">Oncomedic sala de espera: Gestiòn de Archivos</h2>
+                    </header>
+                    <main class="container-fluid mt-4">
+                        <div class="container-medias m-auto p-4">
+                            <div class="row" style="transition: all .4s" id="medias">
+            
+                            </div>
+                        </div>
+                    </main>
+            </div>
+            
+        </div>
+    </div>
+    <script src="./bootstrap.min.js"></script>
+    <script src="./videos.js"></script>
+   
+    <script>
+        
+        
+    function redirectMedia(){
+        window.location="medias.html";
+    }
+
+    function redirectHome(){
+        window.location="index.html";
+    }
+
+    </script>
+</body>
+</html>

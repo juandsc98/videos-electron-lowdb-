@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software sala de espera</title>
+    <link rel="stylesheet" href="./bootstrap.min.css">
+
+    <link rel="stylesheet" href="animate.min.css">
+    <link rel="stylesheet" href="./notie.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./bootstrap.min.js"></script>
+    <script src="./ui.js"></script>
+</head>
+<body id="#home">
+    <div class="loader-body" id="loader">
+        <img class="position-absolute top-50 start-50 translate-middle loader" src="./loader.gif"/>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1 col-xl-1">
+            <div class="btn-group-vertical w-100" style="height: 100vh;"  role="group" aria-label="Button group with nested dropdown">
+                <button onclick="redirectHome()" id="home" type="button" class="btn btn-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-house m-auto" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 3.293l6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+                            <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+                        </svg><br>
+                        <p class="text-center" style="line-height: 14px;font-size: 11px;margin-top:5px;padding:10px;">Subir Archivos</p>
+                </button>
+                <button onclick="redirectMedia()" id="videos" type="button" class="btn btn-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-collection-play-fill m-auto" viewBox="0 0 16 16">
+                        <path d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zm6.258-6.437a.5.5 0 0 1 .507.013l4 2.5a.5.5 0 0 1 0 .848l-4 2.5A.5.5 0 0 1 6 12V7a.5.5 0 0 1 .258-.437z"/>
+                      </svg><br>
+                    <p style="line-height: 14px;font-size: 11px;margin-top:5px;padding:10px;">Gestionar Archivos</p>
+                </button>
+                <button id="presentar" type="button" class="btn btn-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-collection-play-fill m-auto" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z"/>
+                      </svg><br>
+                    <p style="line-height: 14px;font-size: 11px;margin-top:5px;padding:10px;">Presentar Media</p>
+                </button>
+              
+                
+              </div>
+
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-11 col-lg-11 col-xl-11">
+            <div class="w-100" id="main-app">
+                <header class="p-4 bg-secondary">
+        
+                    <h4 class="text-center text-white">Oncomedic sala de espera: Subir Archivos</h4>
+                    </header>
+                    <br>
+                    <main class="container-fluid">
+                        <div class="col-md-11 m-auto my-auto">
+                            <form action="" enctype="multipart/form-data" class="card  p-4" id="mediaForm">
+                                
+                                      
+                                <div class="row">
+                                    
+                                    <div class="col-md-6">
+                                        
+                                              <p class="text-center file-return" id="file-return" style="font-size:10px;"></p>
+                                              <p class="text-center">Previsualización</p>
+                                              <div class="mx-4" id="preview" style="min-height: 150px;"></div>	
+                                           
+                                        <br>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <h6 class="mt-2 text-center text-black">Adjunte el archivo (Imagen o Video)</h6><br>
+                                            <div class="input-file-container m-auto">  
+                                                <input class="input-file" id="file" type="file">
+                                                <label tabindex="0" for="my-file" class="input-file-trigger m-auto"><svg  xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-file-arrow-up" viewBox="0 0 16 16">
+                                                    <path d="M8 11a.5.5 0 0 0 .5-.5V6.707l1.146 1.147a.5.5 0 0 0 .708-.708l-2-2a.5.5 0 0 0-.708 0l-2 2a.5.5 0 1 0 .708.708L7.5 6.707V10.5a.5.5 0 0 0 .5.5z"/>
+                                                    <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>
+                                                  </svg></label>
+                                              </div>
+                                              <p class="text-center">Doble click</p><br>
+                                            </div>
+                                        <div class="form-group">
+                                            <input required="required" class="form-control" autofocus type="text" id="time" placeholder="Duración de presentación del archivo (milisegundos)">
+                                        </div><br>
+                                        <div class="form-group">
+                                            <input required="required" class="form-control" autofocus type="text" id="name" placeholder="Nombre del archivo">
+                                        </div><br>
+        
+                                        <a class="btn btn-primary w-100" id="guardar">Guardar</a>
+                                    </div>
+                                </div>
+                                
+                            </form>
+                        </div>    
+                    </main>
+            </div>
+            
+        </div>
+    </div>
+    
+    <script src="./app.js"></script>
+    <script>
+        document.querySelector("html").classList.add('js');
+
+var fileInput  = document.querySelector( ".input-file" ),  
+    button     = document.querySelector( ".input-file-trigger" ),
+    the_return = document.querySelector(".file-return");
+      
+button.addEventListener( "keydown", function( event ) {  
+    if ( event.keyCode == 13 || event.keyCode == 32 ) {  
+        fileInput.focus();  
+    }  
+});
+button.addEventListener( "click", function( event ) {
+   fileInput.focus();
+   return false;
+});  
+fileInput.addEventListener( "change", function( event ) {  
+    the_return.innerHTML = this.value;  
+});  
+    function redirectMedia(){
+        window.location="medias.html";
+    }
+
+    function redirectPresentar(){
+        window.location="media.html";
+    }
+
+    function redirectHome(){
+        window.location="index.html";
+    }
+
+    let fileValidate = document.getElementById("file")
+    fileValidate.onchange = function(e) {
+        // Creamos el objeto de la clase FileReader
+        let reader = new FileReader();
+
+        // Leemos el archivo subido y se lo pasamos a nuestro fileReader
+        
+
+        // Le decimos que cuando este listo ejecute el código interno
+        reader.onload = function(){
+            let preview = document.getElementById('preview'),
+                    videoHtml = document.createElement("video"),
+
+            imagenHtml = document.createElement("img")
+
+
+            let printMedia = ``
+                switch (fileValidate.files[0].type) {
+                    case 'image/jpeg':
+                        printMedia = imagenHtml
+                        
+                        break;
+                    case 'image/png':
+                        printMedia = imagenHtml
+                        
+                        break;
+                    case 'image/gif':
+                        printMedia = imagenHtml
+                        
+                        break;
+                    case 'image/jpg':
+                        printMedia = imagenHtml
+                        
+                        break;
+                    case 'image/webp':
+                            printMedia = imagenHtml
+                            
+                        break;
+                    case 'video/ogg':
+                            printMedia = videoHtml
+                            printMedia.setAttribute("controls", "")
+                            printMedia.setAttribute("id", "fileVideo")
+                        break;
+                    case 'video/webm':
+                            printMedia = videoHtml
+                            printMedia.setAttribute("controls", "")
+                            printMedia.setAttribute("id", "fileVideo")
+                        break
+                    case 'video/mp4':
+                            printMedia = videoHtml
+                            printMedia.setAttribute("controls", "")
+                            printMedia.setAttribute("id", "fileVideo")
+                        break
+                
+                    default:
+                        break;
+                }
+                    
+
+                    printMedia.src = reader.result
+                    
+
+                    preview.innerHTML = '';
+                    preview.append(printMedia);
+                    const video = document.querySelector("video")
+                    let timeMedia = 0
+                video.addEventListener('loadeddata', (event) => {
+                    timeMedia = video.duration * 1000
+                    
+                    
+                    document.getElementById("time").value = timeMedia
+                    
+
+
+                    console.log(video.duration);
+                });
+                    
+                }
+                
+                reader.readAsDataURL(e.target.files[0]);
+                
+                
+
+                
+                
+
+        }
+        
+        
+
+    </script>
+</body>
+</html>

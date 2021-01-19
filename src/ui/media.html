@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software sala de espera</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <link rel="stylesheet" href="animate.min.css">
+    <link rel="stylesheet" href="./notie.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="./ui.js"></script>
+</head>
+<body style="background-color: #2a2a2a!important;">
+    <div class="loader-body" id="loader">
+        <img class="position-absolute top-50 start-50 translate-middle loader" src="./loader.gif"/>
+    </div>
+
+            <div class="container-medias-play m-auto">
+                    <div class="swiper-container">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper" id="mediasPresent">
+                         
+                        </div>
+                    </div>
+
+            </div> 
+
+    <script src="./swiper.js"></script>
+    <script src="./medias.js"></script>
+    <script>
+        setTimeout(function() {
+        var swiper = new Swiper(".swiper-container", {
+            spaceBetween: 30,
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            },
+            watchSlidesVisibility:true,
+            centeredSlides: true,
+            loop: false,
+            grabCursor:false,
+            simulateTouch:false,
+            preventInteractionOnTransition:true,
+            autoplay: {
+                delay: 200,
+                disableOnInteraction: false,
+            },
+        });
+        swiper.mousewheel.disable();
+
+            let activeSlide = document.getElementsByClassName('swiper-slide');
+            
+            for (let index = 0; index < activeSlide.length; index++) {
+                
+                    //console.log(activeSlide[index].children);
+                    const observer = new MutationObserver((mutationList) => { 
+                    mutationList.forEach((mutation)=> {
+                        //if(mutation.addedNodes.length){
+                        //    console.log('activo', mutation.addedNodes[0]);
+                        //}
+                        //if(mutation.removedNodes.length){
+                        //    console.log('inactivo', mutation.removedNodes[0]);
+                        //}
+                        if(mutation.attributeName == "class"){
+                            //console.log('ha mutado el slide: ', mutation.attributeName);
+                            if(activeSlide[index].classList.contains('swiper-slide-active') && activeSlide[index].children[0].classList.contains('video') ){
+                            
+                            //console.log(activeSlide[index].children[0]);
+                            activeSlide[index].children[0].play()
+                        }
+                        }
+                            
+                            
+                        
+                        })
+                    });
+                    
+                    const observerOptions = { 
+                        attributes: true, 
+                        //childList: true, 
+                        //subtree: true,
+                        //characterData: false,
+                        attributeOldValue: false,
+                        oldValue:true
+                        //characterDataOldValue: false
+                    };
+
+                    observer.observe(activeSlide[index], observerOptions);
+                    //observer.disconnect()
+                   
+                        /*if(activeSlide[index].classList.contains('swiper-slide-active') && activeSlide[index].children[0].classList.contains('video') ){
+                            
+                            console.log(activeSlide[index].children[0]);
+                            activeSlide[index].children[0].play()
+                        }*/
+                
+                    
+            }
+
+            
+        }, 0);
+        
+    </script>
+</body>
+</html>
